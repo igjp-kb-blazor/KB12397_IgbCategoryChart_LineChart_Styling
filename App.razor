@@ -1,0 +1,45 @@
+﻿<div style="max-width:600px; margin: 24px auto;">
+    @*
+    線の色、太さ、線種を変更するため、SeriesAddedScript パラメーターに JavaScript の "スクリプト名" を指定します。
+    (JavaScript で igRegisterScript 関数に登録したスクリプト名を指定します)
+    JavaScript ファイル "wwwroot/igb-chart-style.js" の内容もあわせて参照してください。
+    *@
+
+    <IgbCategoryChart Width="100%"
+                      Height="300px"
+                      DataSource="_data"
+                      ChartType="CategoryChartType.Line"
+                      IncludedProperties="@(new string[] { "Year", "Europe", "China", "America" })"
+                      YAxisTitle="TWh"
+                      YAxisTitleLeftMargin="10"
+                      YAxisTitleRightMargin="5"
+                      YAxisLabelLeftMargin="0"
+                      SeriesAddedScript="onSeriesAddedScript">
+    </IgbCategoryChart>
+</div>
+
+@code
+{
+    public class SampleData
+    {
+        public required string Year { get; set; }
+        public double Europe { get; set; }
+        public double China { get; set; }
+        public double America { get; set; }
+    }
+
+    private IEnumerable<SampleData> _data = new SampleData[] {
+            new() { Year = @"2009", Europe = 34, China = 21, America = 19 },
+            new() { Year = @"2010", Europe = 43, China = 26, America = 24 },
+            new() { Year = @"2011", Europe = 66, China = 29, America = 28 },
+            new() { Year = @"2012", Europe = 69, China = 32, America = 26 },
+            new() { Year = @"2013", Europe = 58, China = 47, America = 38 },
+            new() { Year = @"2014", Europe = 40, China = 46, America = 31 },
+            new() { Year = @"2015", Europe = 78, China = 50, America = 19 },
+            new() { Year = @"2016", Europe = 13, China = 90, America = 52 },
+            new() { Year = @"2017", Europe = 78, China = 132, America = 50 },
+            new() { Year = @"2018", Europe = 40, China = 134, America = 34 },
+            new() { Year = @"2018", Europe = 40, China = 134, America = 34 },
+            new() { Year = @"2019", Europe = 80, China = 96, America = 38 }
+    };
+}
